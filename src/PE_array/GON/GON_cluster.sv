@@ -2,7 +2,7 @@
 `define GON_CLUSTER_SV
 
 `include "define.svh"
-`include "src/PE_array/GON/GON_Bus.v"
+`include "src/PE_array/GON/GON_Bus.sv"
 
 // Two-level cluster GON:
 //   PE_cluster outputs -> cluster-column X bus -> cluster-row Y bus -> GLB output

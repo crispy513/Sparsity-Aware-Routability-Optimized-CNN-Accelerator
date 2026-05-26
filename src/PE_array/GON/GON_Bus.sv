@@ -2,7 +2,7 @@
 `define GON_BUS_V
 
 `include "define.svh"
-`include "src/PE_array/GON/GON_MulticastController.v"
+`include "src/PE_array/GON/GON_MulticastController.sv"
 
 // GON_Bus is a tagged gather bus.
 // It collects one selected source from NUMS_MASTER masters and forwards it to one slave.

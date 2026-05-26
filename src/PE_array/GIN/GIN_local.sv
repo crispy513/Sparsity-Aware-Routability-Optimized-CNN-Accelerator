@@ -2,7 +2,7 @@
 `define GIN_LOCAL_V
 
 `include "define.svh"
-`include "src/PE_array/GIN/GIN_Bus.v"
+`include "src/PE_array/GIN/GIN_Bus.sv"
 
 // Two-level local GIN inside one PE_cluster:
 //   input stream -> Y bus selects local row -> X bus selects local column -> PE valid bits

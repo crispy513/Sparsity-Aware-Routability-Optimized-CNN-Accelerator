@@ -3,8 +3,8 @@
 
 `include "define.svh"
 `include "src/PE_array/PE.sv"
-`include "src/PE_array/GIN/GIN_local.v"
-`include "src/PE_array/GON/GON_local.v"
+`include "src/PE_array/GIN/GIN_local.sv"
+`include "src/PE_array/GON/GON_local.sv"
 
 module PE_cluster #(
     parameter int PE_ROW_PER_CLUSTER = 2,

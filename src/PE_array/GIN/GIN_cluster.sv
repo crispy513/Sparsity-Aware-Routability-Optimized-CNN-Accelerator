@@ -2,7 +2,7 @@
 `define GIN_CLUSTER_SV
 
 `include "define.svh"
-`include "src/PE_array/GIN/GIN_Bus.v"
+`include "src/PE_array/GIN/GIN_Bus.sv"
 
 // Two-level cluster GIN:
 //   GLB stream -> cluster-row Y bus -> cluster-column X bus -> one valid per PE_cluster

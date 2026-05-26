@@ -230,15 +230,11 @@ module top_with_glb #(
 
     logic GLB_ifmap_valid;
     logic GLB_ifmap_ready;
-    logic [DATA_SIZE-1:0] GLB_ifmap_data_in;
-
     logic GLB_filter_valid;
     logic GLB_filter_ready;
-    logic [DATA_SIZE-1:0] GLB_filter_data_in;
-
     logic GLB_ipsum_valid;
     logic GLB_ipsum_ready;
-    logic [DATA_SIZE-1:0] GLB_ipsum_data_in;
+    logic [DATA_SIZE-1:0] GLB_data_in;
 
     logic PE_ifmap_valid;
     logic PE_ifmap_ready;
@@ -251,6 +247,14 @@ module top_with_glb #(
     logic PE_ipsum_valid;
     logic PE_ipsum_ready;
     logic [DATA_SIZE-1:0] PE_ipsum_data;
+
+    logic PE_array_ifmap_valid;
+    logic PE_array_ifmap_ready;
+    logic PE_array_filter_valid;
+    logic PE_array_filter_ready;
+    logic PE_array_ipsum_valid;
+    logic PE_array_ipsum_ready;
+    logic [DATA_SIZE-1:0] PE_array_data_in;
 
     logic PE_opsum_valid;
     logic PE_opsum_ready;
@@ -329,13 +333,11 @@ module top_with_glb #(
 
         .GLB_ifmap_valid     (GLB_ifmap_valid),
         .GLB_ifmap_ready     (GLB_ifmap_ready),
-        .GLB_ifmap_data_in   (GLB_ifmap_data_in),
         .GLB_filter_valid    (GLB_filter_valid),
         .GLB_filter_ready    (GLB_filter_ready),
-        .GLB_filter_data_in  (GLB_filter_data_in),
         .GLB_ipsum_valid     (GLB_ipsum_valid),
         .GLB_ipsum_ready     (GLB_ipsum_ready),
-        .GLB_ipsum_data_in   (GLB_ipsum_data_in),
+        .GLB_data_in         (GLB_data_in),
         .GLB_opsum_valid     (enc_opsum_valid),
         .GLB_opsum_ready     (enc_opsum_ready),
         .GLB_data_out        (enc_opsum_data)
@@ -520,7 +522,7 @@ module top_with_glb #(
         .nz_count_i     (ifmap_bmap_nz),
         .bitmap_valid_i (ifmap_bmap_valid),
         .bitmap_ready_o (ifmap_bmap_ready),
-        .cmp_data_i     (GLB_ifmap_data_in),
+        .cmp_data_i     (GLB_data_in),
         .cmp_valid_i    (GLB_ifmap_valid),
         .cmp_ready_o    (GLB_ifmap_ready),
         .dense_data_o   (PE_ifmap_data),
@@ -538,7 +540,7 @@ module top_with_glb #(
         .nz_count_i     (filter_bmap_nz),
         .bitmap_valid_i (filter_bmap_valid),
         .bitmap_ready_o (filter_bmap_ready),
-        .cmp_data_i     (GLB_filter_data_in),
+        .cmp_data_i     (GLB_data_in),
         .cmp_valid_i    (GLB_filter_valid),
         .cmp_ready_o    (GLB_filter_ready),
         .dense_data_o   (PE_filter_data),
@@ -556,7 +558,7 @@ module top_with_glb #(
         .nz_count_i     (ipsum_bmap_nz),
         .bitmap_valid_i (ipsum_bmap_valid),
         .bitmap_ready_o (ipsum_bmap_ready),
-        .cmp_data_i     (GLB_ipsum_data_in),
+        .cmp_data_i     (GLB_data_in),
         .cmp_valid_i    (GLB_ipsum_valid),
         .cmp_ready_o    (GLB_ipsum_ready),
         .dense_data_o   (PE_ipsum_data),
@@ -565,8 +567,20 @@ module top_with_glb #(
     );
 
     // ------------------------------------------------------------------
-    // PE array sees dense data. It does not need to understand bitmap format.
+    // PE array sees dense data through one shared input data bus.
     // ------------------------------------------------------------------
+    assign PE_array_ifmap_valid  = PE_ifmap_valid;
+    assign PE_array_filter_valid = PE_filter_valid;
+    assign PE_array_ipsum_valid  = PE_ipsum_valid;
+
+    assign PE_array_data_in      = (PE_ifmap_valid && PE_array_ifmap_ready)   ? PE_ifmap_data  :
+                                   (PE_filter_valid && PE_array_filter_ready) ? PE_filter_data :
+                                   (PE_ipsum_valid && PE_array_ipsum_ready)   ? PE_ipsum_data  : '0;
+
+    assign PE_ifmap_ready        = PE_array_ifmap_ready;
+    assign PE_filter_ready       = PE_array_filter_ready;
+    assign PE_ipsum_ready        = PE_array_ipsum_ready;
+
     PE_array #(
         .NUMS_PE_ROW        (NUMS_PE_ROW),
         .NUMS_PE_COL        (NUMS_PE_COL),
@@ -601,15 +615,13 @@ module top_with_glb #(
         .ipsum_tag_Y        (ipsum_tag_Y),
         .opsum_tag_X        (opsum_tag_X),
         .opsum_tag_Y        (opsum_tag_Y),
-        .GLB_ifmap_valid    (PE_ifmap_valid),
-        .GLB_ifmap_ready    (PE_ifmap_ready),
-        .GLB_ifmap_data_in  (PE_ifmap_data),
-        .GLB_filter_valid   (PE_filter_valid),
-        .GLB_filter_ready   (PE_filter_ready),
-        .GLB_filter_data_in (PE_filter_data),
-        .GLB_ipsum_valid    (PE_ipsum_valid),
-        .GLB_ipsum_ready    (PE_ipsum_ready),
-        .GLB_ipsum_data_in  (PE_ipsum_data),
+        .GLB_ifmap_valid    (PE_array_ifmap_valid),
+        .GLB_ifmap_ready    (PE_array_ifmap_ready),
+        .GLB_filter_valid   (PE_array_filter_valid),
+        .GLB_filter_ready   (PE_array_filter_ready),
+        .GLB_ipsum_valid    (PE_array_ipsum_valid),
+        .GLB_ipsum_ready    (PE_array_ipsum_ready),
+        .GLB_data_in        (PE_array_data_in),
         .GLB_opsum_valid    (PE_opsum_valid),
         .GLB_opsum_ready    (PE_opsum_ready),
         .GLB_data_out       (PE_opsum_data)
@@ -649,21 +661,21 @@ module top_with_glb #(
     // ------------------------------------------------------------------
     assign GLB_ifmap_valid_dbg  = GLB_ifmap_valid;
     assign GLB_ifmap_ready_dbg  = GLB_ifmap_ready;
-    assign GLB_ifmap_data_dbg   = GLB_ifmap_data_in;
+    assign GLB_ifmap_data_dbg   = GLB_data_in;
     assign PE_ifmap_valid_dbg   = PE_ifmap_valid;
     assign PE_ifmap_ready_dbg   = PE_ifmap_ready;
     assign PE_ifmap_data_dbg    = PE_ifmap_data;
 
     assign GLB_filter_valid_dbg = GLB_filter_valid;
     assign GLB_filter_ready_dbg = GLB_filter_ready;
-    assign GLB_filter_data_dbg  = GLB_filter_data_in;
+    assign GLB_filter_data_dbg  = GLB_data_in;
     assign PE_filter_valid_dbg  = PE_filter_valid;
     assign PE_filter_ready_dbg  = PE_filter_ready;
     assign PE_filter_data_dbg   = PE_filter_data;
 
     assign GLB_ipsum_valid_dbg  = GLB_ipsum_valid;
     assign GLB_ipsum_ready_dbg  = GLB_ipsum_ready;
-    assign GLB_ipsum_data_dbg   = GLB_ipsum_data_in;
+    assign GLB_ipsum_data_dbg   = GLB_data_in;
     assign PE_ipsum_valid_dbg   = PE_ipsum_valid;
     assign PE_ipsum_ready_dbg   = PE_ipsum_ready;
     assign PE_ipsum_data_dbg    = PE_ipsum_data;

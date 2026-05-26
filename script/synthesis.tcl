@@ -1,19 +1,19 @@
 #   Read in RTL modules
-set search_path "$search_path ../src ../src/GIN ../src/GON"
+set search_path "$search_path .. ../src ../src/PE_array ../src/PE_array/GIN ../src/PE_array/GON"
 set rtl_files [list \
-    ../src/GIN/GIN_MulticastController.v \
-    ../src/GIN/GIN_Bus.v \
-    ../src/GIN/GIN_local.v \
-    ../src/GIN/GIN_cluster.sv \
-    ../src/GON/GON_MulticastController.v \
-    ../src/GON/GON_Bus.v \
-    ../src/GON/GON_local.v \
-    ../src/GON/GON_cluster.sv \
-    ../src/GON/GON.v \
-    ../src/PE.sv \
-    ../src/PE_cluster.sv \
-    ../src/rv_pipe_reg.sv \
-    ../src/PE_array.sv \
+    ../src/PE_array/GIN/GIN_MulticastController.sv \
+    ../src/PE_array/GIN/GIN_Bus.sv \
+    ../src/PE_array/GIN/GIN_local.sv \
+    ../src/PE_array/GIN/GIN_cluster.sv \
+    ../src/PE_array/GON/GON_MulticastController.sv \
+    ../src/PE_array/GON/GON_Bus.sv \
+    ../src/PE_array/GON/GON_local.sv \
+    ../src/PE_array/GON/GON_cluster.sv \
+    ../src/PE_array/GON/GON.sv \
+    ../src/PE_array/PE.sv \
+    ../src/PE_array/PE_cluster.sv \
+    ../src/PE_array/rv_pipe_reg.sv \
+    ../src/PE_array/PE_array.sv \
 ]
 analyze -format sverilog $rtl_files
 

@@ -2,7 +2,7 @@
 `define GIN_BUS_V
 
 `include "define.svh"
-`include "src/PE_array/GIN/GIN_MulticastController.v"
+`include "src/PE_array/GIN/GIN_MulticastController.sv"
 
 module GIN_Bus #(
     parameter int NUMS_SLAVE       = `NUMS_PE_COL,

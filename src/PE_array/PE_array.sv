@@ -59,18 +59,14 @@ module PE_array #(
     input  logic [XID_BITS-1:0] opsum_tag_X,
     input  logic [YID_BITS-1:0] opsum_tag_Y,
 
-    /* GLB: three independent input streams */
+    /* GLB: one shared data bus, one active input stream at a time */
     input  logic                 GLB_ifmap_valid,
     output logic                 GLB_ifmap_ready,
-    input  logic [DATA_SIZE-1:0] GLB_ifmap_data_in,
-
     input  logic                 GLB_filter_valid,
     output logic                 GLB_filter_ready,
-    input  logic [DATA_SIZE-1:0] GLB_filter_data_in,
-
     input  logic                 GLB_ipsum_valid,
     output logic                 GLB_ipsum_ready,
-    input  logic [DATA_SIZE-1:0] GLB_ipsum_data_in,
+    input  logic [DATA_SIZE-1:0] GLB_data_in,
 
     output logic                 GLB_opsum_valid,
     input  logic                 GLB_opsum_ready,
@@ -163,6 +159,51 @@ module PE_array #(
     logic [NUMS_CLUSTER-1:0] ipsum_cluster_valid, ipsum_cluster_ready;
     logic [DATA_SIZE-1:0]    ipsum_cluster_data;
 
+    logic ifmap_in_valid;
+    logic filter_in_valid;
+    logic ipsum_in_valid;
+    logic ifmap_in_ready;
+    logic filter_in_ready;
+    logic ipsum_in_ready;
+    logic ifmap_can_accept;
+    logic filter_can_accept;
+    logic ipsum_can_accept;
+
+    function automatic logic cluster_target_ready(
+        input logic [NUMS_CLUSTER-1:0] ready_vec,
+        input logic [CLUSTER_XID_BITS-1:0] tag_x,
+        input logic [CLUSTER_YID_BITS-1:0] tag_y
+    );
+        logic ready_hit;
+        ready_hit = 1'b0;
+        for (int rr = 0; rr < NUMS_CLUSTER_ROW; rr++) begin
+            for (int cc = 0; cc < NUMS_CLUSTER_COL; cc++) begin
+                if ((tag_y == rr) && (tag_x == cc)) begin
+                    ready_hit = ready_vec[rr*NUMS_CLUSTER_COL + cc];
+                end
+            end
+        end
+        return ready_hit;
+    endfunction
+
+    assign ifmap_can_accept  = cluster_target_ready(ifmap_cluster_ready,
+                                                    ifmap_cluster_tag_X,
+                                                    ifmap_cluster_tag_Y);
+    assign filter_can_accept = cluster_target_ready(filter_cluster_ready,
+                                                    filter_cluster_tag_X,
+                                                    filter_cluster_tag_Y);
+    assign ipsum_can_accept  = cluster_target_ready(ipsum_cluster_ready,
+                                                    ipsum_cluster_tag_X,
+                                                    ipsum_cluster_tag_Y);
+
+    assign ifmap_in_valid  = GLB_ifmap_valid && ifmap_can_accept;
+    assign filter_in_valid = !ifmap_in_valid && GLB_filter_valid && filter_can_accept;
+    assign ipsum_in_valid  = !ifmap_in_valid && !filter_in_valid && GLB_ipsum_valid && ipsum_can_accept;
+
+    assign GLB_ifmap_ready  = ifmap_can_accept;
+    assign GLB_filter_ready = filter_can_accept;
+    assign GLB_ipsum_ready  = ipsum_can_accept;
+
     GIN_cluster #(
         .NUMS_CLUSTER_ROW (NUMS_CLUSTER_ROW),
         .NUMS_CLUSTER_COL (NUMS_CLUSTER_COL),
@@ -172,9 +213,9 @@ module PE_array #(
     ) u_ifmap_cluster_gin (
         .clk                 (clk),
         .rst                 (rst),
-        .in_valid            (GLB_ifmap_valid),
-        .in_ready            (GLB_ifmap_ready),
-        .in_data             (GLB_ifmap_data_in),
+        .in_valid            (ifmap_in_valid),
+        .in_ready            (ifmap_in_ready),
+        .in_data             (GLB_data_in),
         .cluster_tag_X       (ifmap_cluster_tag_X),
         .cluster_tag_Y       (ifmap_cluster_tag_Y),
         .set_cluster_XID     (set_XID),
@@ -195,9 +236,9 @@ module PE_array #(
     ) u_filter_cluster_gin (
         .clk                 (clk),
         .rst                 (rst),
-        .in_valid            (GLB_filter_valid),
-        .in_ready            (GLB_filter_ready),
-        .in_data             (GLB_filter_data_in),
+        .in_valid            (filter_in_valid),
+        .in_ready            (filter_in_ready),
+        .in_data             (GLB_data_in),
         .cluster_tag_X       (filter_cluster_tag_X),
         .cluster_tag_Y       (filter_cluster_tag_Y),
         .set_cluster_XID     (set_XID),
@@ -218,9 +259,9 @@ module PE_array #(
     ) u_ipsum_cluster_gin (
         .clk                 (clk),
         .rst                 (rst),
-        .in_valid            (GLB_ipsum_valid),
-        .in_ready            (GLB_ipsum_ready),
-        .in_data             (GLB_ipsum_data_in),
+        .in_valid            (ipsum_in_valid),
+        .in_ready            (ipsum_in_ready),
+        .in_data             (GLB_data_in),
         .cluster_tag_X       (ipsum_cluster_tag_X),
         .cluster_tag_Y       (ipsum_cluster_tag_Y),
         .set_cluster_XID     (set_XID),

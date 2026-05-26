@@ -1,8 +1,8 @@
 `timescale 1ns/1ps
 
 `include "define.svh"
-`include "src/PE_array/GIN/GIN_Bus.v"
-`include "src/PE_array/GON/GON_Bus.v"
+`include "src/PE_array/GIN/GIN_Bus.sv"
+`include "src/PE_array/GON/GON_Bus.sv"
 
 module tb_noc;
     localparam int DATA_SIZE = 32;

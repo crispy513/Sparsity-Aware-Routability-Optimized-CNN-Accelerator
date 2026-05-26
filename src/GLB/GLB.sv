@@ -195,15 +195,13 @@ module GLB #(
 
     output logic                   GLB_ifmap_valid,
     input  logic                   GLB_ifmap_ready,
-    output logic [DATA_SIZE-1:0]   GLB_ifmap_data_in,
 
     output logic                   GLB_filter_valid,
     input  logic                   GLB_filter_ready,
-    output logic [DATA_SIZE-1:0]   GLB_filter_data_in,
 
     output logic                   GLB_ipsum_valid,
     input  logic                   GLB_ipsum_ready,
-    output logic [DATA_SIZE-1:0]   GLB_ipsum_data_in,
+    output logic [DATA_SIZE-1:0]   GLB_data_in,
 
     input  logic                   GLB_opsum_valid,
     output logic                   GLB_opsum_ready,
@@ -244,6 +242,9 @@ module GLB #(
     logic filter_fire;
     logic ipsum_fire;
     logic opsum_fire;
+    logic ifmap_out_valid;
+    logic filter_out_valid;
+    logic ipsum_out_valid;
 
     logic ifmap_stream_rd_en;
     logic filter_stream_rd_en;
@@ -283,12 +284,16 @@ module GLB #(
     assign filter_busy = (filter_left_q != 0) || filter_valid_q || filter_pending_q;
     assign ipsum_busy  = (ipsum_left_q  != 0) || ipsum_valid_q  || ipsum_pending_q;
 
-    assign GLB_ifmap_valid   = ifmap_valid_q;
-    assign GLB_filter_valid  = filter_valid_q;
-    assign GLB_ipsum_valid   = ipsum_valid_q;
-    assign GLB_ifmap_data_in = ifmap_data_q;
-    assign GLB_filter_data_in = filter_data_q;
-    assign GLB_ipsum_data_in = ipsum_data_q;
+    assign ifmap_out_valid  = ifmap_valid_q && GLB_ifmap_ready;
+    assign filter_out_valid = !ifmap_out_valid && filter_valid_q && GLB_filter_ready;
+    assign ipsum_out_valid  = !ifmap_out_valid && !filter_out_valid && ipsum_valid_q && GLB_ipsum_ready;
+
+    assign GLB_ifmap_valid  = ifmap_out_valid;
+    assign GLB_filter_valid = filter_out_valid;
+    assign GLB_ipsum_valid  = ipsum_out_valid;
+    assign GLB_data_in      = ifmap_out_valid  ? ifmap_data_q  :
+                              filter_out_valid ? filter_data_q :
+                              ipsum_out_valid  ? ipsum_data_q  : '0;
 
     assign ifmap_fire  = GLB_ifmap_valid  & GLB_ifmap_ready;
     assign filter_fire = GLB_filter_valid & GLB_filter_ready;

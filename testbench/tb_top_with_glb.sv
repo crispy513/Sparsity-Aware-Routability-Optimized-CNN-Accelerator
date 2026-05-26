@@ -827,7 +827,7 @@ module tb_top_with_glb;
             saw_opsum_bitmap_done |= opsum_bitmap_done;
             saw_opsum_encode_done |= opsum_encode_done;
             cycles++;
-            if (cycles > 500) begin
+            if (cycles > 5000) begin
                 $error("Timeout waiting for pipeline completion");
                 $fatal(1);
             end
