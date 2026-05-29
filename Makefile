@@ -114,7 +114,7 @@ default: all
 .PHONY: run format show-config dist maintainer-copy
 .PHONY: array% pe% ppu%
 .PHONY: array_classroom% pe_classroom% ppu_classroom%
-.PHONY: synthesize_PE synthesize_PE_ori spyglass pt wave
+.PHONY: synthesize synthesize_PE synthesize_PE_ori synthesize_PE_array spyglass pt wave
 
 ######################################################################
 # Folder Creation
@@ -218,20 +218,44 @@ maintainer-copy::
 # Synopsys Design Compiler / PrimeTime / SpyGlass
 ######################################################################
 
-synthesize_PE: $(syn_dir) $(bld_dir)
-	cp script/synopsys_dc.setup $(bld_dir)/.synopsys_dc.setup; \
-	cd $(bld_dir); \
-	dc_shell -no_home_init -f ../script/synthesis_PE.tcl
+#======================================================================
+# Generic synthesis target
+# Usage examples:
+#   make synthesize SYN_TOP=PE        SYN_SRC=src/PE_array/PE.sv
+#   make synthesize SYN_TOP=PE_origin SYN_SRC=src/PE_array/PE_origin.sv SYN_OUT=PE_ori
+#   make synthesize SYN_TOP=PPU       SYN_SRC=src/PPU/PPU.sv
+#   make synthesize SYN_TOP=PE_array  SYN_SRC="src/PE_array/PE.sv src/PE_array/PE_array.sv"
+#
+# SYN_TOP : top module name used by elaborate/current_design
+# SYN_SRC : RTL files, separated by spaces
+# SYN_OUT : output/report prefix. Default = SYN_TOP
+#======================================================================
 
-synthesize_PE_ori: $(syn_dir) $(bld_dir)
-	cp script/synopsys_dc.setup $(bld_dir)/.synopsys_dc.setup; \
-	cd $(bld_dir); \
-	dc_shell -no_home_init -f ../script/synthesis_PE_ori.tcl
+SYN_TOP ?= PE
+SYN_SRC ?= src/PE_array/$(SYN_TOP).sv
+SYN_OUT ?= $(SYN_TOP)
 
-synthesize_PE_array: $(syn_dir) $(bld_dir)
-	cp script/synopsys_dc.setup $(bld_dir)/.synopsys_dc.setup; \
-	cd $(bld_dir); \
-	dc_shell -no_home_init -f ../script/synthesis_PE_array.tcl
+# Export these Makefile variables so Tcl can read them through $::env(...)
+export SYN_TOP
+export SYN_SRC
+export SYN_OUT
+
+synthesize: $(syn_dir) $(bld_dir)
+	@echo "SYN_TOP = $(SYN_TOP)"
+	@echo "SYN_SRC = $(SYN_SRC)"
+	@echo "SYN_OUT = $(SYN_OUT)"
+	cp script/synopsys_dc.setup $(bld_dir)/.synopsys_dc.setup
+	cd $(bld_dir) && dc_shell -no_home_init -f ../script/synthesis.tcl
+
+# Backward-compatible shortcuts
+synthesize_PE:
+	$(MAKE) synthesize SYN_TOP=PE SYN_SRC="src/PE_array/PE.sv" SYN_OUT=PE
+
+synthesize_PE_ori:
+	$(MAKE) synthesize SYN_TOP=PE_origin SYN_SRC="src/PE_array/PE_origin.sv" SYN_OUT=PE_ori
+
+synthesize_PE_array:
+	$(MAKE) synthesize SYN_TOP=PE_array SYN_SRC="src/PE_array/PE.sv src/PE_array/PE_array.sv" SYN_OUT=PE_array
 spyglass: $(bld_dir)
 	@cd $(bld_dir); \
 	spyglass &
