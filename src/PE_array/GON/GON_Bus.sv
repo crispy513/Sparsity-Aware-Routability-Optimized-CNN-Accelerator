@@ -40,6 +40,7 @@ module GON_Bus #(
     logic [NUMS_MASTER-1:0] source_hit;
     logic [NUMS_MASTER-1:0] candidate_valid;
     logic [NUMS_MASTER-1:0] selected;
+    logic [NUMS_MASTER-1:0] downstream_ready;
 
     integer k;
     genvar i;
@@ -51,7 +52,6 @@ module GON_Bus #(
         slave_valid  = 1'b0;
         slave_data   = '0;
         selected     = '0;
-        master_ready = '0;
 
         for (k = 0; k < NUMS_MASTER; k = k + 1) begin
             if ((slave_valid == 1'b0) && candidate_valid[k]) begin
@@ -60,19 +60,17 @@ module GON_Bus #(
                 selected[k] = 1'b1;
             end
         end
-
-        for (k = 0; k < NUMS_MASTER; k = k + 1) begin
-            // Only the selected source is consumed when downstream is ready.
-            master_ready[k] = selected[k] & slave_ready;
-        end
     end
+
+    assign downstream_ready = {NUMS_MASTER{slave_ready}};
+    assign master_ready = selected & downstream_ready;
 
     generate
         if (STATIC_ID_ENABLE) begin : GEN_STATIC_ID
             assign ID_scan_out = ID_scan_in;
 
             for (i = 0; i < NUMS_MASTER; i = i + 1) begin : GEN_STATIC_HIT
-                localparam logic [ID_SIZE-1:0] THIS_ID = i;
+                localparam logic [ID_SIZE-1:0] THIS_ID = ID_SIZE'(i);
                 assign source_hit[i]      = (tag == THIS_ID);
                 assign candidate_valid[i] = master_valid[i] & source_hit[i];
             end

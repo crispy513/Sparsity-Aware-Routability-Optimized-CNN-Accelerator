@@ -47,7 +47,7 @@ module GIN_Bus #(
             assign ID_scan_out = ID_scan_in;
 
             for (i = 0; i < NUMS_SLAVE; i = i + 1) begin : GEN_STATIC_MC
-                localparam logic [ID_SIZE-1:0] THIS_ID = i;
+                localparam logic [ID_SIZE-1:0] THIS_ID = ID_SIZE'(i);
                 logic hit;
 
                 assign hit            = (tag == THIS_ID);
