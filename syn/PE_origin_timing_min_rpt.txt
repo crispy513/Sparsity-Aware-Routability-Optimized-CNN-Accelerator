@@ -1,0 +1,59 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+        -sort_by group
+Design : PE_origin
+Version: W-2024.09-SP2
+Date   : Sat May 30 00:30:33 2026
+****************************************
+
+Operating Conditions: ff0p88vm40c   Library: N16ADFP_StdCellff0p88vm40c
+Wire Load Model Mode: segmented
+
+  Startpoint: ifmap[8] (input port clocked by clk)
+  Endpoint: ifmap_spad_reg_8__0_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_origin          ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  0.0000     0.2500 f
+  ifmap[8] (in)                                         0.0000     0.2500 f
+  U5546/Z (CKBD1BWP16P90LVT)                            0.0256     0.2756 f
+  U7987/ZN (AOI22D1BWP16P90LVT)                         0.0114     0.2870 r
+  U7986/ZN (OAI211D1BWP16P90LVT)                        0.0093     0.2963 f
+  U5539/Z (CKBD1BWP16P90LVT)                            0.0099     0.3062 f
+  U5545/Z (CKBD1BWP16P90LVT)                            0.0089     0.3151 f
+  U5544/Z (CKBD1BWP16P90LVT)                            0.0088     0.3239 f
+  U5543/Z (CKBD1BWP16P90LVT)                            0.0088     0.3327 f
+  U5542/Z (CKBD1BWP16P90LVT)                            0.0088     0.3416 f
+  U5541/Z (CKBD1BWP16P90LVT)                            0.0088     0.3504 f
+  U5540/Z (CKBD1BWP16P90LVT)                            0.0088     0.3592 f
+  U5538/Z (CKBD1BWP16P90LVT)                            0.0089     0.3681 f
+  ifmap_spad_reg_8__0_/D (DFCNQD2BWP16P90LVT)           0.0000     0.3681 f
+  data arrival time                                                0.3681
+
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  clock uncertainty                                     0.1000     0.3500
+  ifmap_spad_reg_8__0_/CP (DFCNQD2BWP16P90LVT)          0.0000     0.3500 r
+  library hold time                                     0.0181     0.3681
+  data required time                                               0.3681
+  --------------------------------------------------------------------------
+  data required time                                               0.3681
+  data arrival time                                               -0.3681
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0000
+
+
+1

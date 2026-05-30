@@ -56,6 +56,17 @@ report_timing -path full -delay max -nworst 1 -max_paths 1 \
 report_timing -path full -delay min -nworst 1 -max_paths 1 \
     -significant_digits 4 -sort_by group > ../syn/PE_timing_min_rpt.txt
 
+report_timing -path full -delay max -nworst 50 -max_paths 50 \
+    -significant_digits 4 -sort_by group > ../syn/PE_array_timing_max_50_rpt.txt
+
+report_timing -path full -delay max -through [get_cells -hier *GIN*] \
+    -nworst 20 -max_paths 20 -significant_digits 4 \
+    > ../syn/PE_array_timing_GIN_rpt.txt
+
+report_timing -path full -delay max -through [get_cells -hier *GON*] \
+    -nworst 20 -max_paths 20 -significant_digits 4 \
+    > ../syn/PE_array_timing_GON_rpt.txt
+    
 report_area -nosplit > ../syn/PE_area_rpt.txt
 
 report_power -analysis_effort low > ../syn/PE_power_rpt.txt

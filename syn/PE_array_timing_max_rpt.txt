@@ -1,0 +1,89 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'PE_array' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : PE_array
+Version: W-2024.09-SP2
+Date   : Sun May 31 02:11:44 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+  Startpoint: GLB_opsum_ready
+              (input port clocked by clk)
+  Endpoint: CONSERVATIVE_GON_GON/Y_Bus/pipe_data_reg_6_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_TAG_SIZE3_DATA_SIZE32_PIPELINE_EN1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_NUMS_XBUS6_NUMS_PE8_XID_SIZE4_YID_SIZE3_DATA_SIZE32_PIPELINE_EN1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_DATA_SIZE32_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_DATA_SIZE32_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_DATA_SIZE32_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_DATA_SIZE32_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_DATA_SIZE32_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_DATA_SIZE32_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  GLB_opsum_ready (in)                                  0.0000     1.4500 r
+  U2748/Z (DEL075D1BWP20P90)                            0.1546     1.6046 r
+  CONSERVATIVE_GON_GON/GON_ready (GON_NUMS_XBUS6_NUMS_PE8_XID_SIZE4_YID_SIZE3_DATA_SIZE32_PIPELINE_EN1)
+                                                        0.0000     1.6046 r
+  CONSERVATIVE_GON_GON/Y_Bus/slave_ready (GON_Bus_NUMS_MASTER6_TAG_SIZE3_DATA_SIZE32_PIPELINE_EN1)
+                                                        0.0000     1.6046 r
+  CONSERVATIVE_GON_GON/Y_Bus/U201/Z (AN2D1BWP16P90LVT)
+                                                        0.0222     1.6268 r
+  CONSERVATIVE_GON_GON/Y_Bus/U79/ZN (INR3D1BWP20P90LVT)
+                                                        0.0891     1.7159 r
+  CONSERVATIVE_GON_GON/Y_Bus/U76/Z (BUFFD1BWP20P90)     0.0351     1.7510 r
+  CONSERVATIVE_GON_GON/Y_Bus/U77/ZN (INVD1BWP20P90)     0.0133     1.7643 f
+  CONSERVATIVE_GON_GON/Y_Bus/U78/ZN (INVD1BWP20P90)     0.0224     1.7867 r
+  CONSERVATIVE_GON_GON/Y_Bus/U70/Z (AN2D1BWP20P90)      0.0789     1.8656 r
+  CONSERVATIVE_GON_GON/Y_Bus/U81/ZN (AOI22D1BWP16P90LVT)
+                                                        0.0182     1.8838 f
+  CONSERVATIVE_GON_GON/Y_Bus/U16/ZN (OAI21D2BWP16P90LVT)
+                                                        0.0082     1.8920 r
+  CONSERVATIVE_GON_GON/Y_Bus/U15/Z (DEL050D1BWP20P90)   0.0915     1.9835 r
+  CONSERVATIVE_GON_GON/Y_Bus/pipe_data_reg_6_/D (DFQD2BWP16P90LVT)
+                                                        0.0000     1.9835 r
+  data arrival time                                                1.9835
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  CONSERVATIVE_GON_GON/Y_Bus/pipe_data_reg_6_/CP (DFQD2BWP16P90LVT)
+                                                        0.0000     2.1500 r
+  library setup time                                   -0.0118     2.1382
+  data required time                                               2.1382
+  --------------------------------------------------------------------------
+  data required time                                               2.1382
+  data arrival time                                               -1.9835
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.1547
+
+
+1

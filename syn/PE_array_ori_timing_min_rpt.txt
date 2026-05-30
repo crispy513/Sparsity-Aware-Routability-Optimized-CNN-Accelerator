@@ -1,0 +1,110 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+        -sort_by group
+Design : PE_array
+Version: W-2024.09-SP2
+Date   : Sat May 30 20:42:21 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ff0p88vm40c   Library: N16ADFP_StdCellff0p88vm40c
+Wire Load Model Mode: segmented
+
+  Startpoint: PE_ROW_4__PE_COL_4__PE/input_ch_reg_0_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: PE_ROW_4__PE_COL_4__PE/count_input_ch_reg_0_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_0               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_1               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_2               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_3               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_4               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_5               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_6               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_7               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_8               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_9               ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_10              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_11              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_12              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_13              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_14              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_15              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_16              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_17              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_18              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_19              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_20              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_21              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_22              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_23              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_24              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_25              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_26              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_27              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_28              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_29              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_30              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_31              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_32              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_33              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_34              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_35              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_36              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_37              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_38              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_39              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_40              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_41              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_42              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_43              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_44              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_45              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_46              ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_47              ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  PE_ROW_4__PE_COL_4__PE/input_ch_reg_0_/CP (DFCNQD2BWP16P90LVT)
+                                                        0.0000 #   0.2500 r
+  PE_ROW_4__PE_COL_4__PE/input_ch_reg_0_/Q (DFCNQD2BWP16P90LVT)
+                                                        0.0524     0.3024 f
+  PE_ROW_4__PE_COL_4__PE/U1327/Z (CKBD1BWP16P90LVT)     0.0128     0.3152 f
+  PE_ROW_4__PE_COL_4__PE/U103/ZN (OAI21D1BWP20P90)      0.0143     0.3295 r
+  PE_ROW_4__PE_COL_4__PE/U104/Z (CKBD1BWP16P90LVT)      0.0108     0.3403 r
+  PE_ROW_4__PE_COL_4__PE/U4358/ZN (OAI22D1BWP16P90LVT)
+                                                        0.0086     0.3489 f
+  PE_ROW_4__PE_COL_4__PE/U106/Z (CKBD1BWP16P90LVT)      0.0096     0.3585 f
+  PE_ROW_4__PE_COL_4__PE/U105/Z (CKBD1BWP16P90LVT)      0.0090     0.3675 f
+  PE_ROW_4__PE_COL_4__PE/count_input_ch_reg_0_/D (DFCNQD1BWP20P90LVT)
+                                                        0.0000     0.3675 f
+  data arrival time                                                0.3675
+
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  clock uncertainty                                     0.1000     0.3500
+  PE_ROW_4__PE_COL_4__PE/count_input_ch_reg_0_/CP (DFCNQD1BWP20P90LVT)
+                                                        0.0000     0.3500 r
+  library hold time                                     0.0176     0.3676
+  data required time                                               0.3676
+  --------------------------------------------------------------------------
+  data required time                                               0.3676
+  data arrival time                                               -0.3675
+  --------------------------------------------------------------------------
+  slack (VIOLATED: increase significant digits)                    0.0000
+
+
+1

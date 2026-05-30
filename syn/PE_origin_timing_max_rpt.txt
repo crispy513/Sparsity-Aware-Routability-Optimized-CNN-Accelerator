@@ -1,0 +1,91 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : PE_origin
+Version: W-2024.09-SP2
+Date   : Sat May 30 00:30:33 2026
+****************************************
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+  Startpoint: ipsum[1] (input port clocked by clk)
+  Endpoint: ofmap_spad_reg_0__30_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_origin          ZeroWireload          N16ADFP_StdCellss0p72v125c
+  PE_origin_DW01_add_6
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 f
+  ipsum[1] (in)                                         0.0000     1.4500 f
+  add_299/B[1] (PE_origin_DW01_add_6)                   0.0000     1.4500 f
+  add_299/U228/Z (OR2D1BWP16P90LVT)                     0.0183     1.4683 f
+  add_299/U106/ZN (AOI21D1BWP16P90LVT)                  0.0126     1.4809 r
+  add_299/U100/ZN (OAI21D1BWP16P90LVT)                  0.0132     1.4941 f
+  add_299/U162/ZN (AOI21D1BWP16P90LVT)                  0.0157     1.5098 r
+  add_299/U163/ZN (OAI21D1BWP16P90LVT)                  0.0097     1.5195 f
+  add_299/U159/ZN (AOI21D1BWP16P90LVT)                  0.0150     1.5345 r
+  add_299/U160/ZN (OAI21D1BWP16P90LVT)                  0.0097     1.5442 f
+  add_299/U144/ZN (AOI21D1BWP16P90LVT)                  0.0181     1.5623 r
+  add_299/U156/ZN (OAI21D2BWP16P90LVT)                  0.0076     1.5700 f
+  add_299/U157/ZN (AOI21D1BWP16P90LVT)                  0.0091     1.5790 r
+  add_299/U213/ZN (OAI21D1BWP16P90LVT)                  0.0100     1.5890 f
+  add_299/U219/ZN (AOI21D2BWP16P90LVT)                  0.0105     1.5995 r
+  add_299/U182/ZN (OAI21D2BWP16P90LVT)                  0.0091     1.6086 f
+  add_299/U146/Z (AO21D1BWP20P90LVT)                    0.0207     1.6293 f
+  add_299/U122/CO (FA1D4BWP20P90LVT)                    0.0231     1.6524 f
+  add_299/U131/ZN (ND2D2BWP16P90LVT)                    0.0062     1.6587 r
+  add_299/U133/ZN (ND3D1BWP16P90LVT)                    0.0201     1.6788 f
+  add_299/U123/CO (FA1D2BWP20P90LVT)                    0.0296     1.7084 f
+  add_299/U124/CO (FA1D2BWP20P90LVT)                    0.0282     1.7365 f
+  add_299/U125/CO (FA1D2BWP20P90LVT)                    0.0289     1.7654 f
+  add_299/U139/ZN (ND2D2BWP16P90LVT)                    0.0091     1.7745 r
+  add_299/U140/ZN (ND3D4BWP16P90LVT)                    0.0145     1.7890 f
+  add_299/U143/ZN (ND2D2BWP16P90LVT)                    0.0090     1.7980 r
+  add_299/U150/ZN (ND3D4BWP16P90LVT)                    0.0138     1.8118 f
+  add_299/U135/CO (FA1D2BWP16P90LVT)                    0.0245     1.8363 f
+  add_299/U126/CO (FA1D2BWP20P90LVT)                    0.0277     1.8640 f
+  add_299/U132/CO (FA1D1BWP16P90LVT)                    0.0287     1.8927 f
+  add_299/U138/CO (FA1D2BWP16P90LVT)                    0.0262     1.9189 f
+  add_299/U142/CO (FA1D4BWP16P90LVT)                    0.0229     1.9418 f
+  add_299/U152/ZN (ND2D1BWP16P90LVT)                    0.0114     1.9532 r
+  add_299/U154/ZN (ND3D4BWP16P90LVT)                    0.0107     1.9639 f
+  add_299/U137/CO (FA1D2BWP16P90LVT)                    0.0242     1.9881 f
+  add_299/U178/CO (FA1D2BWP16P90LVT)                    0.0244     2.0125 f
+  add_299/U227/CO (FA1D2BWP16P90LVT)                    0.0240     2.0365 f
+  add_299/U226/S (FA1D1BWP16P90)                        0.0549     2.0914 r
+  add_299/SUM[30] (PE_origin_DW01_add_6)                0.0000     2.0914 r
+  U5269/ZN (MAOI22D1BWP20P90LVT)                        0.0105     2.1019 f
+  U9134/ZN (IOA21D1BWP16P90LVT)                         0.0177     2.1196 r
+  U5271/Z (CKMUX2D8BWP16P90LVT)                         0.0182     2.1378 r
+  ofmap_spad_reg_0__30_/D (DFCNQD2BWP16P90LVT)          0.0000     2.1378 r
+  data arrival time                                                2.1378
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  ofmap_spad_reg_0__30_/CP (DFCNQD2BWP16P90LVT)         0.0000     2.1500 r
+  library setup time                                   -0.0122     2.1378
+  data required time                                               2.1378
+  --------------------------------------------------------------------------
+  data required time                                               2.1378
+  data arrival time                                               -2.1378
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0000
+
+
+1

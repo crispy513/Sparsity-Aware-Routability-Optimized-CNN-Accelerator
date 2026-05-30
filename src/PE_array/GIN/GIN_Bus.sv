@@ -1,85 +1,120 @@
-`ifndef GIN_BUS_V
-`define GIN_BUS_V
+ module GIN_Bus #(
+    parameter NUMS_SLAVE = 8,
+    parameter TAG_SIZE = 6,
+    parameter DATA_SIZE = 32,
+    parameter PIPELINE_EN = 1
+) (
+    input clk,
+    input rst,
+    input [TAG_SIZE - 1:0] tag,
 
-`include "define.svh"
-`include "src/PE_array/GIN/GIN_MulticastController.sv"
+    input master_valid,
+    input [DATA_SIZE - 1:0] master_data,
+    output logic master_ready,
 
-module GIN_Bus #(
-    parameter int NUMS_SLAVE       = `NUMS_PE_COL,
-    parameter int ID_SIZE          = `XID_BITS,
-    parameter int DATA_SIZE        = `DATA_BITS,
-    // 1: use physical index as ID, no scan configuration needed.
-    // 0: use the original scan-chain ID registers.
-    parameter bit STATIC_ID_ENABLE = 1'b0
-)(
-    input  logic                         clk,
-    input  logic                         rst,
+    input [NUMS_SLAVE - 1:0] slave_ready,
+    output logic [NUMS_SLAVE - 1:0] slave_valid,
+    output logic [NUMS_SLAVE*DATA_SIZE - 1:0] slave_data,
+    // Config
+    input set_id,
+    input [TAG_SIZE - 1:0] ID_scan_in,
+    output logic [TAG_SIZE - 1 :0] ID_scan_out
+ );
 
-    // Master side
-    input  logic [ID_SIZE-1:0]           tag,
-    input  logic                         master_valid,
-    input  logic [DATA_SIZE-1:0]         master_data,
-    output logic                         master_ready,
+// tag -> The tag represents the PE ID to which the input data should be sent.
+// ID ->　The ID represents the identifier number of the PE
 
-    // Slave side
-    input  logic [NUMS_SLAVE-1:0]        slave_ready,
-    output logic [NUMS_SLAVE-1:0]        slave_valid,
-    output logic [DATA_SIZE-1:0]         slave_data,
+// 1 indicates that the data for this round has already been received
+// 0 indicates it has not yet been received.
+logic [NUMS_SLAVE - 1:0] valid_mask;
+logic [NUMS_SLAVE - 1:0] mc_valid;
+logic [NUMS_SLAVE - 1:0] mc_ready;
+logic pipe_valid;
+logic [DATA_SIZE - 1:0] pipe_data;
+logic [TAG_SIZE - 1:0] pipe_tag;
+logic pipe_ready;
+logic bus_valid;
+logic [DATA_SIZE - 1:0] bus_data;
+logic [TAG_SIZE - 1:0] bus_tag;
+logic [TAG_SIZE - 1:0] ID_scan_chain [0:NUMS_SLAVE];
 
-    // ID scan-chain config
-    input  logic                         set_id,
-    input  logic [ID_SIZE-1:0]           ID_scan_in,
-    output logic [ID_SIZE-1:0]           ID_scan_out
-);
+integer j;
 
-    logic [NUMS_SLAVE-1:0] mc_ready;
+generate
+if (PIPELINE_EN) begin : GIN_INPUT_PIPELINE
+   always_ff @( posedge clk ) begin
+      if (rst) begin
+         pipe_valid <= 1'b0;
+         pipe_data <= 'd0;
+         pipe_tag <= 'd0;
+      end
+      else if (master_ready) begin
+         pipe_valid <= master_valid;
+         if (master_valid) begin
+            pipe_data <= master_data;
+            pipe_tag <= tag;
+         end
+      end
+   end
 
-    genvar i;
+   assign bus_valid = pipe_valid;
+   assign bus_data = pipe_data;
+   assign bus_tag = pipe_tag;
+   assign master_ready = ~pipe_valid || pipe_ready;
+end
+else begin : GIN_INPUT_BYPASS
+   assign pipe_valid = 1'b0;
+   assign pipe_data = 'd0;
+   assign pipe_tag = 'd0;
+   assign bus_valid = master_valid;
+   assign bus_data = master_data;
+   assign bus_tag = tag;
+   assign master_ready = pipe_ready;
+end
+endgenerate
 
-    assign slave_data   = master_data;
+always_ff @( posedge clk ) begin
+   if (rst) valid_mask <= 'd0;
+   else if (bus_valid && pipe_ready) valid_mask <= 'd0;
+   else begin
+      for (j = 0; j < NUMS_SLAVE; j = j + 1) begin
+         if (mc_valid[j] && mc_ready[j]) valid_mask[j] <= 1'd1;
+      end
+   end
+end
 
-    // Broadcast can consume one word only when every selected destination is ready.
-    // Non-selected destinations return ready=1, so they do not block.
-    assign master_ready = &mc_ready;
+generate
+genvar i;
+for (i = 0; i < NUMS_SLAVE; i++) begin : GIN_MC
+   GIN_MulticastController #(
+      .TAG_SIZE(TAG_SIZE),
+      .DATA_SIZE(DATA_SIZE)
+   ) MC (
+      .clk(clk),
+      .rst(rst),
+      .set_id(set_id),
+      .id_in(ID_scan_chain[i+1]),
+      .id(ID_scan_chain[i]),
+      .tag(bus_tag),
+      .valid_in(bus_valid),
+      .valid_out(mc_valid[i]),
+      .ready_in(slave_ready[i]),
+      .ready_out(mc_ready[i])
+   );
+end
+endgenerate
 
-    generate
-        if (STATIC_ID_ENABLE) begin : GEN_STATIC_ID
-            assign ID_scan_out = ID_scan_in;
+assign ID_scan_chain[NUMS_SLAVE] = ID_scan_in;
 
-            for (i = 0; i < NUMS_SLAVE; i = i + 1) begin : GEN_STATIC_MC
-                localparam logic [ID_SIZE-1:0] THIS_ID = ID_SIZE'(i);
-                logic hit;
+// Slave I/O: SRAM <-> Bus
+// All master are ready -> ready = 1
+assign pipe_ready = &(mc_ready | valid_mask);
 
-                assign hit            = (tag == THIS_ID);
-                assign slave_valid[i] = master_valid & hit;
-                assign mc_ready[i]    = (~master_valid) | (~hit) | slave_ready[i];
-            end
-        end
-        else begin : GEN_SCAN_ID
-            logic [ID_SIZE-1:0] id_chain [0:NUMS_SLAVE];
+// Master I/O: Bus <-> PE
+assign slave_valid = mc_valid & ~valid_mask;
+assign slave_data = {NUMS_SLAVE{bus_data}};
 
-            assign id_chain[0] = ID_scan_in;
-            assign ID_scan_out = id_chain[NUMS_SLAVE];
-
-            for (i = 0; i < NUMS_SLAVE; i = i + 1) begin : GEN_MC
-                GIN_MulticastController #(
-                    .ID_SIZE(ID_SIZE)
-                ) u_mc (
-                    .clk       (clk),
-                    .rst       (rst),
-                    .set_id    (set_id),
-                    .id_in     (id_chain[i]),
-                    .id        (id_chain[i+1]),
-                    .tag       (tag),
-                    .valid_in  (master_valid),
-                    .valid_out (slave_valid[i]),
-                    .ready_in  (slave_ready[i]),
-                    .ready_out (mc_ready[i])
-                );
-            end
-        end
-    endgenerate
+// Config
+assign ID_scan_out = ID_scan_chain[0];
 
 endmodule
-
-`endif

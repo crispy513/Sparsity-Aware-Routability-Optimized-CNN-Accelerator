@@ -62,7 +62,7 @@ puts "RTL files   = $rtl_files"
 #=====================================================================
 # Read in RTL modules
 #=====================================================================
-set search_path "$search_path .. ../src ../src/PE_array ../src/PPU ../include"
+set search_path "$search_path .. ../src ../src/PE_array ../src/PE_array_ori ../src/PPU ../include ../src/PE_array/GIN  ../src/PE_array/GON"
 
 analyze -format sverilog $rtl_files
 
@@ -102,11 +102,25 @@ file mkdir ../syn
 #=====================================================================
 # Create Report
 #=====================================================================
-report_timing -path full -delay max -nworst 1 -max_paths 1 \
-    -significant_digits 4 -sort_by group > ../syn/${OUT_NAME}_timing_max_rpt.txt
 
-report_timing -path full -delay min -nworst 1 -max_paths 1 \
-    -significant_digits 4 -sort_by group > ../syn/${OUT_NAME}_timing_min_rpt.txt
+
+report_timing -path full -delay min -nworst 50 -max_paths 50 -significant_digits 4 -sort_by group > ../syn/${OUT_NAME}_timing_min_50_rpt.txt
+
+report_timing -path full -delay max -nworst 50 -max_paths 50 -significant_digits 4 -sort_by group > ../syn/${OUT_NAME}_timing_max_50_rpt.txt
+
+set_false_path -from [get_ports rst]
+
+report_timing -path full -delay max -nworst 50 -max_paths 50 -significant_digits 4 -sort_by group > ../syn/${OUT_NAME}_timing_max_no_rst_rpt.txt
+
+report_timing -path full -delay max \
+    -through [get_pins -hier *GIN*/*] \
+    -nworst 20 -max_paths 20 -significant_digits 4 \
+    > ../syn/${OUT_NAME}_timing_GIN_rpt.txt
+
+report_timing -path full -delay max \
+    -through [get_pins -hier *GON*/*] \
+    -nworst 20 -max_paths 20 -significant_digits 4 \
+    > ../syn/${OUT_NAME}_timing_GON_rpt.txt
 
 report_area -nosplit > ../syn/${OUT_NAME}_area_rpt.txt
 

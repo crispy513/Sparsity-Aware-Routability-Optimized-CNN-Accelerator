@@ -1,92 +1,115 @@
-`ifndef GIN_V
-`define GIN_V
-
-`include "define.svh"
-`include "src/PE_array/GIN/GIN_Bus.sv"
+//`include "src/PE_array/GIN/GIN_Bus.sv"
+//`include "src/PE_array/GIN/GIN_MulticastController.sv"
 
 module GIN #(
-    parameter int NUMS_PE_ROW = `NUMS_PE_ROW,
-    parameter int NUMS_PE_COL = `NUMS_PE_COL,
-    parameter int DATA_SIZE   = `DATA_BITS,
-    parameter int XID_BITS    = `XID_BITS,
-    parameter int YID_BITS    = `YID_BITS
-)(
-    input  logic clk,
-    input  logic rst,
+    parameter   NUMS_XBUS    = 6,
+                NUMS_XPE     = 8,
+                XID_SIZE    = 6,
+                YID_SIZE    = 3,
+                DATA_SIZE    = 32,
+                PIPELINE_EN  = 1
+) (
+    input clk,
+    input rst,
 
-    input  logic GIN_valid,
+    // Slave SRAM <-> GIN
+    input GIN_valid,
     output logic GIN_ready,
-    input  logic [DATA_SIZE-1:0] GIN_data,
+    input [DATA_SIZE - 1:0] GIN_data,
 
-    input  logic [XID_BITS-1:0] tag_X,
-    input  logic [YID_BITS-1:0] tag_Y,
+    /* Controller <-> GIN */
+    input [XID_SIZE - 1:0] tag_X,
+    input [YID_SIZE - 1:0] tag_Y,
 
-    input  logic set_XID,
-    input  logic [XID_BITS-1:0] XID_scan_in,
-    input  logic set_YID,
-    input  logic [YID_BITS-1:0] YID_scan_in,
+    /* config */
+    input set_XID,
+    input [XID_SIZE - 1:0] XID_scan_in,
+    input set_YID,
+    input [YID_SIZE - 1:0] YID_scan_in,
 
-    input  logic [NUMS_PE_ROW*NUMS_PE_COL-1:0] PE_ready,
-    output logic [NUMS_PE_ROW*NUMS_PE_COL-1:0] PE_valid,
-    output logic [DATA_SIZE-1:0] PE_data
+    // Master GIN <-> PE
+    input [NUMS_XBUS * NUMS_XPE - 1:0] PE_ready,
+    output logic [NUMS_XBUS * NUMS_XPE - 1:0] PE_valid,
+    output logic [NUMS_XBUS * NUMS_XPE * DATA_SIZE - 1:0] PE_data
 );
 
-    logic [NUMS_PE_ROW-1:0] row_valid;
-    logic [NUMS_PE_ROW-1:0] row_ready;
-    logic [DATA_SIZE-1:0]   row_data;
+logic [NUMS_XBUS - 1:0] XBus_ready;
+logic [NUMS_XBUS - 1:0] XBus_valid;
+logic [NUMS_XBUS*DATA_SIZE - 1:0] XBus_data;
+logic [XID_SIZE - 1:0] XBus_tag_X;
 
-    logic [YID_BITS-1:0] yid_scan_out_unused;
-    logic [XID_BITS-1:0] xid_scan_chain [0:NUMS_PE_ROW];
+/* verilator lint_off UNOPTFLAT */
+logic [XID_SIZE - 1:0] scan_chain [0:NUMS_XBUS];
+/* verilator lint_on UNOPTFLAT */
+assign scan_chain[NUMS_XBUS] = XID_scan_in;
 
-    genvar r;
+generate
+if (PIPELINE_EN) begin : GIN_XTAG_PIPELINE
+    logic [XID_SIZE - 1:0] XBus_tag_X_reg;
 
-    assign xid_scan_chain[0] = XID_scan_in;
-    assign PE_data           = row_data;
+    always_ff @( posedge clk ) begin
+        if (rst) XBus_tag_X_reg <= 'd0;
+        else if (GIN_ready && GIN_valid) XBus_tag_X_reg <= tag_X;
+    end
 
+    assign XBus_tag_X = XBus_tag_X_reg;
+end
+else begin : GIN_XTAG_BYPASS
+    assign XBus_tag_X = tag_X;
+end
+endgenerate
+
+// Y BUS
+GIN_Bus #(
+    .NUMS_SLAVE(NUMS_XBUS),
+    .TAG_SIZE(YID_SIZE),
+    .DATA_SIZE(DATA_SIZE),
+    .PIPELINE_EN(PIPELINE_EN)
+) YBus (
+    .clk(clk),
+    .rst(rst),
+    .tag(tag_Y),
+    // GLB
+    .master_valid(GIN_valid),
+    .master_data(GIN_data),
+    .master_ready(GIN_ready),
+    // Bus
+    .slave_ready(XBus_ready),
+    .slave_valid(XBus_valid),
+    .slave_data(XBus_data),
+    // Config
+    .set_id(set_YID),
+    .ID_scan_in(YID_scan_in),
+    .ID_scan_out()
+);
+
+genvar i;
+// X BUS
+generate
+for (i = 0; i < NUMS_XBUS; i++) begin : GIN_XBUS
     GIN_Bus #(
-        .NUMS_SLAVE       (NUMS_PE_ROW),
-        .ID_SIZE          (YID_BITS),
-        .DATA_SIZE        (DATA_SIZE),
-        .STATIC_ID_ENABLE (1'b0)
-    ) u_y_bus (
-        .clk          (clk),
-        .rst          (rst),
-        .tag          (tag_Y),
-        .master_valid (GIN_valid),
-        .master_data  (GIN_data),
-        .master_ready (GIN_ready),
-        .slave_ready  (row_ready),
-        .slave_valid  (row_valid),
-        .slave_data   (row_data),
-        .set_id       (set_YID),
-        .ID_scan_in   (YID_scan_in),
-        .ID_scan_out  (yid_scan_out_unused)
+        .NUMS_SLAVE(NUMS_XPE),
+        .TAG_SIZE(XID_SIZE),
+        .DATA_SIZE(DATA_SIZE),
+        .PIPELINE_EN(PIPELINE_EN)
+    ) XBus (
+        .clk(clk),
+        .rst(rst),
+        .tag(XBus_tag_X),
+        // Bus
+        .master_valid(XBus_valid[i]),
+        .master_data(XBus_data[(i+1)*DATA_SIZE-1 : i*DATA_SIZE]),
+        .master_ready(XBus_ready[i]),
+        // PE
+        .slave_ready(PE_ready[(i+1)*NUMS_XPE-1 : i*NUMS_XPE]),
+        .slave_valid(PE_valid[(i+1)*NUMS_XPE-1 : i*NUMS_XPE]),
+        .slave_data(PE_data[(i+1)*NUMS_XPE*DATA_SIZE-1 : i*NUMS_XPE*DATA_SIZE]),
+        // Config
+        .set_id(set_XID),
+        .ID_scan_in(scan_chain[i+1]),
+        .ID_scan_out(scan_chain[i])
     );
-
-    generate
-        for (r = 0; r < NUMS_PE_ROW; r = r + 1) begin : GEN_X_BUS
-            GIN_Bus #(
-                .NUMS_SLAVE       (NUMS_PE_COL),
-                .ID_SIZE          (XID_BITS),
-                .DATA_SIZE        (DATA_SIZE),
-                .STATIC_ID_ENABLE (1'b0)
-            ) u_x_bus (
-                .clk          (clk),
-                .rst          (rst),
-                .tag          (tag_X),
-                .master_valid (row_valid[r]),
-                .master_data  (row_data),
-                .master_ready (row_ready[r]),
-                .slave_ready  (PE_ready[r*NUMS_PE_COL +: NUMS_PE_COL]),
-                .slave_valid  (PE_valid[r*NUMS_PE_COL +: NUMS_PE_COL]),
-                .slave_data   (),
-                .set_id       (set_XID),
-                .ID_scan_in   (xid_scan_chain[r]),
-                .ID_scan_out  (xid_scan_chain[r+1])
-            );
-        end
-    endgenerate
+end
+endgenerate
 
 endmodule
-
-`endif

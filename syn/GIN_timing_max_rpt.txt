@@ -1,0 +1,56 @@
+Warning: Design 'GIN' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : GIN
+Version: W-2024.09-SP2
+Date   : Sat May 30 19:04:28 2026
+****************************************
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+  Startpoint: GIN_valid (input port clocked by clk)
+  Endpoint: GIN_XTAG_PIPELINE_XBus_tag_X_reg_reg_0_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  GIN                ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  GIN_valid (in)                                        0.0000     1.4500 r
+  U11/ZN (ND2D1BWP16P90)                                0.0226     1.4726 f
+  U9/ZN (NR2D1BWP16P90)                                 0.0308     1.5034 r
+  U23/Z (AO22D2BWP20P90LVT)                             0.0240     1.5275 r
+  U22/Z (DEL075D1BWP20P90)                              0.1365     1.6639 r
+  GIN_XTAG_PIPELINE_XBus_tag_X_reg_reg_0_/D (DFQD2BWP16P90LVT)
+                                                        0.0000     1.6639 r
+  data arrival time                                                1.6639
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  GIN_XTAG_PIPELINE_XBus_tag_X_reg_reg_0_/CP (DFQD2BWP16P90LVT)
+                                                        0.0000     2.1500 r
+  library setup time                                   -0.0122     2.1378
+  data required time                                               2.1378
+  --------------------------------------------------------------------------
+  data required time                                               2.1378
+  data arrival time                                               -1.6639
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.4739
+
+
+1

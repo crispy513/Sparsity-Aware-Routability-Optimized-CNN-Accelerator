@@ -1,0 +1,55 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+        -sort_by group
+Design : PE
+Version: W-2024.09-SP2
+Date   : Sat May 30 00:25:00 2026
+****************************************
+
+Operating Conditions: ff0p88vm40c   Library: N16ADFP_StdCellff0p88vm40c
+Wire Load Model Mode: segmented
+
+  Startpoint: ofmap_spad_reg_1__1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: ofmap_spad_reg_1__1_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE                 ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  ofmap_spad_reg_1__1_/CP (DFCNQD2BWP16P90LVT)          0.0000     0.2500 r
+  ofmap_spad_reg_1__1_/Q (DFCNQD2BWP16P90LVT)           0.0532     0.3032 f
+  U6176/ZN (IOA22D2BWP20P90)                            0.0200     0.3232 f
+  U6172/Z (CKBD1BWP16P90LVT)                            0.0096     0.3328 f
+  U6175/Z (CKBD1BWP16P90LVT)                            0.0089     0.3417 f
+  U6174/Z (CKBD1BWP16P90LVT)                            0.0088     0.3505 f
+  U6173/Z (CKBD1BWP16P90LVT)                            0.0088     0.3593 f
+  U6171/Z (CKBD1BWP16P90LVT)                            0.0089     0.3682 f
+  ofmap_spad_reg_1__1_/D (DFCNQD2BWP16P90LVT)           0.0000     0.3682 f
+  data arrival time                                                0.3682
+
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  clock uncertainty                                     0.1000     0.3500
+  ofmap_spad_reg_1__1_/CP (DFCNQD2BWP16P90LVT)          0.0000     0.3500 r
+  library hold time                                     0.0181     0.3681
+  data required time                                               0.3681
+  --------------------------------------------------------------------------
+  data required time                                               0.3681
+  data arrival time                                               -0.3682
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0001
+
+
+1
