@@ -3,30 +3,28 @@
 Report : area
 Design : PE_array
 Version: W-2024.09-SP2
-Date   : Sat May 30 20:42:21 2026
+Date   : Sun May 31 19:09:13 2026
 ****************************************
 
 Library(s) Used:
 
     N16ADFP_StdCellss0p72v125c (File: /usr/cad/process/ADFP/Executable_Package/Collaterals/IP/stdcell/N16ADFP_StdCell/NLDM/N16ADFP_StdCellss0p72v125c.db)
 
-Number of ports:                        18308
-Number of nets:                        294003
-Number of cells:                       271003
-Number of combinational cells:         239746
-Number of sequential cells:             31065
+Number of ports:                        29412
+Number of nets:                        321643
+Number of cells:                       289422
+Number of combinational cells:         257495
+Number of sequential cells:             31487
 Number of macros/black boxes:               0
-Number of buf/inv:                      63100
-Number of references:                      65
+Number of buf/inv:                      75787
+Number of references:                      87
 
-Combinational area:              95674.039777
-Buf/Inv area:                    28622.056477
-Noncombinational area:           34548.561806
+Combinational area:             100109.159154
+Buf/Inv area:                    31562.006566
+Noncombinational area:           34707.192177
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (Wire load has zero net area)
 
-Total cell area:                130222.601583
+Total cell area:                134816.351331
 Total area:                 undefined
-
-Information: This design contains black box (unknown) components. (RPT-8)
 1

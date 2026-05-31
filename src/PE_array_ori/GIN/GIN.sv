@@ -1,5 +1,6 @@
-`include "src/PE_array/GIN/GIN_Bus.sv"
-`include "src/PE_array/GIN/GIN_MulticastController.sv"
+`include "../src/PE_array_ori/GIN/GIN_Bus.sv"
+`include "../src/PE_array_ori/GIN/GIN_MulticastController.sv"
+`include "../define.svh"
 
 module GIN (
     input clk,
@@ -59,6 +60,10 @@ GIN_Bus #(
 
 genvar i;
 // X BUS
+logic [`DATA_BITS - 1:0] XBus_unused_data [`NUMS_PE_ROW-1:0];
+
+assign PE_data = XBus_data;
+
 generate
 for (i = 0; i < `NUMS_PE_ROW; i++) begin : GIN_XBUS
     GIN_Bus #(
@@ -68,14 +73,17 @@ for (i = 0; i < `NUMS_PE_ROW; i++) begin : GIN_XBUS
         .clk(clk),
         .rst(rst),
         .tag(tag_X),
+
         // Bus
         .master_valid(XBus_valid[i]),
         .master_data(XBus_data),
         .master_ready(XBus_ready[i]),
+
         // PE
         .slave_ready(PE_ready[(i+1)*`NUMS_PE_COL-1 : i*`NUMS_PE_COL]),
         .slave_valid(PE_valid[(i+1)*`NUMS_PE_COL-1 : i*`NUMS_PE_COL]),
-        .slave_data(PE_data),
+        .slave_data(XBus_unused_data[i]),
+
         // Config
         .set_id(set_XID),
         .ID_scan_in(scan_chain[i+1]),

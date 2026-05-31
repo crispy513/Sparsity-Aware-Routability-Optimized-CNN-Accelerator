@@ -1,5 +1,6 @@
-`include "src/PE_array/GON/GON_Bus.sv"
-`include "src/PE_array/GON/GON_MulticastController.sv"
+`include "../src/PE_array_ori/GON/GON_Bus.sv"
+`include "../src/PE_array_ori/GON/GON_MulticastController.sv"
+`include "../define.svh"
 
 module GON (
     input clk,

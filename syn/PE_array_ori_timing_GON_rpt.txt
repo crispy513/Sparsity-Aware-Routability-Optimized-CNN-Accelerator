@@ -1,0 +1,1998 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 20
+        -max_paths 20
+Design : PE_array
+Version: W-2024.09-SP2
+Date   : Sun May 31 19:09:12 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p72v125c   Library: N16ADFP_StdCellss0p72v125c
+Wire Load Model Mode: segmented
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0312     1.7790 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8824 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8824 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8824 r
+  GLB_data_out[9] (out)                                 0.0000     1.8824 r
+  data arrival time                                                1.8824
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8824
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0676
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0311     1.7789 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8822 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8822 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8822 r
+  GLB_data_out[9] (out)                                 0.0000     1.8822 r
+  data arrival time                                                1.8822
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8822
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0678
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0305     1.7784 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8817 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8817 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8817 r
+  GLB_data_out[9] (out)                                 0.0000     1.8817 r
+  data arrival time                                                1.8817
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8817
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0683
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0305     1.7783 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8817 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8817 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8817 r
+  GLB_data_out[9] (out)                                 0.0000     1.8817 r
+  data arrival time                                                1.8817
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8817
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0683
+
+
+  Startpoint: opsum_tag_X[1]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[1] (in)                                   0.0000     1.4500 r
+  U8405/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[1] (GON) <-                                 0.0000     1.4652 r
+  GON/U4/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[1] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U162/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[1] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U22/Z (XOR2D1BWP16P90LVT)
+                                                        0.0200     1.5289 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0102     1.5391 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5527 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6349 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6349 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6525 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6617 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7469 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7469 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0312     1.7781 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8814 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8814 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8814 r
+  GLB_data_out[9] (out)                                 0.0000     1.8814 r
+  data arrival time                                                1.8814
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8814
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0686
+
+
+  Startpoint: opsum_tag_X[1]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[1] (in)                                   0.0000     1.4500 r
+  U8405/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[1] (GON) <-                                 0.0000     1.4652 r
+  GON/U4/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[1] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U162/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[1] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U22/Z (XOR2D1BWP16P90LVT)
+                                                        0.0200     1.5289 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0102     1.5391 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5527 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6349 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6349 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6525 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6617 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7469 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7469 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0311     1.7780 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8813 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8813 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8813 r
+  GLB_data_out[9] (out)                                 0.0000     1.8813 r
+  data arrival time                                                1.8813
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8813
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0687
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0299     1.7777 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8810 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8810 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8810 r
+  GLB_data_out[9] (out)                                 0.0000     1.8810 r
+  data arrival time                                                1.8810
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8810
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0690
+
+
+  Startpoint: opsum_tag_X[1]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[1] (in)                                   0.0000     1.4500 r
+  U8405/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[1] (GON) <-                                 0.0000     1.4652 r
+  GON/U4/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[1] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U162/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[1] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U22/Z (XOR2D1BWP16P90LVT)
+                                                        0.0200     1.5289 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0102     1.5391 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5527 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6349 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6349 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6525 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6617 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7469 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7469 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0305     1.7775 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8808 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8808 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8808 r
+  GLB_data_out[9] (out)                                 0.0000     1.8808 r
+  data arrival time                                                1.8808
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8808
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0692
+
+
+  Startpoint: opsum_tag_X[1]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[1] (in)                                   0.0000     1.4500 r
+  U8405/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[1] (GON) <-                                 0.0000     1.4652 r
+  GON/U4/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[1] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U162/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[1] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U22/Z (XOR2D1BWP16P90LVT)
+                                                        0.0200     1.5289 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0102     1.5391 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5527 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6349 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6349 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6525 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6617 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7469 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7469 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0305     1.7774 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8807 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8807 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8807 r
+  GLB_data_out[9] (out)                                 0.0000     1.8807 r
+  data arrival time                                                1.8807
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8807
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0693
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0293     1.7771 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8805 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8805 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8805 r
+  GLB_data_out[9] (out)                                 0.0000     1.8805 r
+  data arrival time                                                1.8805
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8805
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0695
+
+
+  Startpoint: opsum_tag_X[3]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[3] (in)                                   0.0000     1.4500 r
+  U8406/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[3] (GON) <-                                 0.0000     1.4652 r
+  GON/U5/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[3] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U163/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[3] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U23/Z (XOR2D1BWP16P90LVT)
+                                                        0.0199     1.5288 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0094     1.5381 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5518 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6339 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6339 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6515 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6608 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7459 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7459 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0312     1.7771 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8805 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8805 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8805 r
+  GLB_data_out[9] (out)                                 0.0000     1.8805 r
+  data arrival time                                                1.8805
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8805
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0695
+
+
+  Startpoint: opsum_tag_X[3]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[3] (in)                                   0.0000     1.4500 r
+  U8406/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[3] (GON) <-                                 0.0000     1.4652 r
+  GON/U5/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[3] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U163/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[3] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U23/Z (XOR2D1BWP16P90LVT)
+                                                        0.0199     1.5288 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0094     1.5381 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5518 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6339 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6339 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6515 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6608 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7459 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7459 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0311     1.7770 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8803 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8803 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8803 r
+  GLB_data_out[9] (out)                                 0.0000     1.8803 r
+  data arrival time                                                1.8803
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8803
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0697
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0291     1.7770 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8803 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8803 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8803 r
+  GLB_data_out[9] (out)                                 0.0000     1.8803 r
+  data arrival time                                                1.8803
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8803
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0697
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 r
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4652 r
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0202     1.5291 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5400 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5537 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6358 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6358 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6534 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6627 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6627 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7479 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7479 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0291     1.7769 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8802 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8802 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8802 r
+  GLB_data_out[9] (out)                                 0.0000     1.8802 r
+  data arrival time                                                1.8802
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8802
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0698
+
+
+  Startpoint: opsum_tag_X[1]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[1] (in)                                   0.0000     1.4500 r
+  U8405/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[1] (GON) <-                                 0.0000     1.4652 r
+  GON/U4/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[1] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U162/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[1] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U22/Z (XOR2D1BWP16P90LVT)
+                                                        0.0200     1.5289 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0102     1.5391 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5527 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6349 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6349 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6525 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6617 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7469 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7469 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0299     1.7768 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8801 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8801 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8801 r
+  GLB_data_out[9] (out)                                 0.0000     1.8801 r
+  data arrival time                                                1.8801
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8801
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0699
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 f
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 f
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0141     1.4641 f
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4641 f
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0163     1.4804 f
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4804 f
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0286     1.5090 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5090 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0177     1.5267 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5377 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5513 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6334 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6334 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6510 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6603 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6603 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6603 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6603 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7455 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7455 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0312     1.7766 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8800 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8800 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8800 r
+  GLB_data_out[9] (out)                                 0.0000     1.8800 r
+  data arrival time                                                1.8800
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8800
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0700
+
+
+  Startpoint: opsum_tag_X[4]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 f
+  opsum_tag_X[4] (in)                                   0.0000     1.4500 f
+  U8404/Z (BUFFD1BWP16P90LVT)                           0.0141     1.4641 f
+  GON/tag_X[4] (GON) <-                                 0.0000     1.4641 f
+  GON/U3/Z (BUFFD1BWP16P90LVT)                          0.0163     1.4804 f
+  GON/GON_XBUS_4__XBus/tag[4] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4804 f
+  GON/GON_XBUS_4__XBus/U161/Z (BUFFD1BWP16P90LVT)       0.0286     1.5090 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[4] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5090 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U21/Z (XOR2D1BWP16P90LVT)
+                                                        0.0177     1.5267 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0109     1.5377 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5513 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6334 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6334 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6510 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6603 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6603 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6603 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6603 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7455 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7455 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0311     1.7765 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8799 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8799 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8799 r
+  GLB_data_out[9] (out)                                 0.0000     1.8799 r
+  data arrival time                                                1.8799
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8799
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0701
+
+
+  Startpoint: opsum_tag_X[3]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[3] (in)                                   0.0000     1.4500 r
+  U8406/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[3] (GON) <-                                 0.0000     1.4652 r
+  GON/U5/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[3] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U163/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[3] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U23/Z (XOR2D1BWP16P90LVT)
+                                                        0.0199     1.5288 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0094     1.5381 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5518 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6339 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6339 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6515 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6608 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7459 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7459 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0305     1.7765 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8798 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8798 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8798 r
+  GLB_data_out[9] (out)                                 0.0000     1.8798 r
+  data arrival time                                                1.8798
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8798
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0702
+
+
+  Startpoint: opsum_tag_X[3]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[3] (in)                                   0.0000     1.4500 r
+  U8406/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[3] (GON) <-                                 0.0000     1.4652 r
+  GON/U5/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[3] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U163/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[3] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U23/Z (XOR2D1BWP16P90LVT)
+                                                        0.0199     1.5288 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0094     1.5381 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5518 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6339 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6339 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6515 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6608 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6608 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7459 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7459 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0305     1.7764 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8798 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8798 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8798 r
+  GLB_data_out[9] (out)                                 0.0000     1.8798 r
+  data arrival time                                                1.8798
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8798
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0702
+
+
+  Startpoint: opsum_tag_X[1]
+              (input port clocked by clk)
+  Endpoint: GLB_data_out[9]
+            (output port clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  PE_array           ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON                ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_0
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_2
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_4
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER8_ID_SIZE5_5
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_15
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_14
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_13
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_12
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_11
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_10
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_9
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE5_8
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_MulticastController_ID_SIZE3_1
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+  GON_Bus_NUMS_MASTER6_ID_SIZE3
+                     ZeroWireload          N16ADFP_StdCellss0p72v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.2500     0.2500
+  input external delay                                  1.2000     1.4500 r
+  opsum_tag_X[1] (in)                                   0.0000     1.4500 r
+  U8405/Z (BUFFD1BWP16P90LVT)                           0.0152     1.4652 r
+  GON/tag_X[1] (GON) <-                                 0.0000     1.4652 r
+  GON/U4/Z (BUFFD1BWP16P90LVT)                          0.0159     1.4811 r
+  GON/GON_XBUS_4__XBus/tag[1] (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.4811 r
+  GON/GON_XBUS_4__XBus/U162/Z (BUFFD1BWP16P90LVT)       0.0278     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/tag[1] (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.5089 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U22/Z (XOR2D1BWP16P90LVT)
+                                                        0.0200     1.5289 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U20/ZN (NR3D1BWP16P90LVT)
+                                                        0.0102     1.5391 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U17/ZN (ND3D1BWP16P90LVT)
+                                                        0.0136     1.5527 f
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/U13/ZN (INR2D1BWP20P90LVT)
+                                                        0.0821     1.6349 r
+  GON/GON_XBUS_4__XBus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE5_11) <-
+                                                        0.0000     1.6349 r
+  GON/GON_XBUS_4__XBus/U160/ZN (NR4D1BWP16P90LVT)       0.0176     1.6525 f
+  GON/GON_XBUS_4__XBus/U158/ZN (ND2D1BWP16P90LVT)       0.0092     1.6617 r
+  GON/GON_XBUS_4__XBus/slave_valid (GON_Bus_NUMS_MASTER8_ID_SIZE5_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/master_valid[4] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_in (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.6617 r
+  GON/Y_Bus/GON_MC_4__MC_i/U10/ZN (INR2D1BWP20P90LVT)   0.0852     1.7469 r
+  GON/Y_Bus/GON_MC_4__MC_i/valid_out (GON_MulticastController_ID_SIZE3_1) <-
+                                                        0.0000     1.7469 r
+  GON/Y_Bus/U100/ZN (AOI222D1BWP16P90LVT)               0.0293     1.7762 f
+  GON/Y_Bus/U98/ZN (ND2D1BWP16P90LVT)                   0.1033     1.8795 r
+  GON/Y_Bus/slave_data[9] (GON_Bus_NUMS_MASTER6_ID_SIZE3)
+                                                        0.0000     1.8795 r
+  GON/GON_data[9] (GON) <-                              0.0000     1.8795 r
+  GLB_data_out[9] (out)                                 0.0000     1.8795 r
+  data arrival time                                                1.8795
+
+  clock clk (rise edge)                                 2.0000     2.0000
+  clock network delay (ideal)                           0.2500     2.2500
+  clock uncertainty                                    -0.1000     2.1500
+  output external delay                                -0.2000     1.9500
+  data required time                                               1.9500
+  --------------------------------------------------------------------------
+  data required time                                               1.9500
+  data arrival time                                               -1.8795
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0705
+
+
+1

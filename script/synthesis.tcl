@@ -62,7 +62,7 @@ puts "RTL files   = $rtl_files"
 #=====================================================================
 # Read in RTL modules
 #=====================================================================
-set search_path "$search_path .. ../src ../src/PE_array ../src/PE_array_ori ../src/PPU ../include ../src/PE_array/GIN  ../src/PE_array/GON"
+set search_path "$search_path ..   ../src/PE_array_ori ../include ../src/PE_array_ori/GIN  ../src/PE_array_ori/GON"
 
 analyze -format sverilog $rtl_files
 
