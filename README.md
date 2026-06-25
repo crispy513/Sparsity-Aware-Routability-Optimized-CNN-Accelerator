@@ -1,40 +1,54 @@
-# Synthesis Command Usage
+# 合成指令說明
 
-This README describes how to run the parameterized Design Compiler synthesis flow.
+這份 README 說明如何使用目前的參數化 Synopsys Design Compiler 合成流程。
 
-The synthesis flow uses one shared Tcl script. You only need to specify the top module name, RTL source files, and optional output prefix from the Makefile command.
+目前合成流程主要使用同一份 Tcl script。執行時只需要透過 Makefile 指定 top module 名稱、RTL source file list，以及可選的輸出檔名前綴。
 
 ---
 
-## Basic Command
+## 環境與限制條件
+
+- 合成工具：Synopsys Design Compiler (`dc_shell`)，使用 CAD/CIC Synopsys 環境。
+- Timing/power 工具：Synopsys PrimeTime (`pt_shell`)，目前 log 觀察到的版本為 `W-2024.09-SP2`。
+- Constraint file：`script/DC.sdc`。
+- Clock constraint：`clk_period = 2 ns`，duty cycle 50%。
+- DC setup file：`script/synopsys_dc.setup`。
+- PT setup file：`script/synopsys_pt.setup`。
+- Process/library：N16ADFP standard cell libraries，包含 `N16ADFP_StdCellss0p72v125c.db` 與 `N16ADFP_StdCellff0p88vm40c.db`。
+- 工作目錄：`build/`。
+- 輸出目錄：`syn/`。
+
+---
+
+## 基本指令
 
 ```bash
 make synthesize SYN_TOP=<top_module> SYN_SRC="<rtl_files>" SYN_OUT=<output_prefix>
 ```
 
-### Arguments
+### 參數
 
-| Argument | Required | Description |
+| 參數 | 是否必填 | 說明 |
 |---|---:|---|
-| `SYN_TOP` | Yes | Top module name to elaborate and synthesize. |
-| `SYN_SRC` | Usually yes | RTL source file or source file list. |
-| `SYN_OUT` | No | Output file prefix. If not specified, it defaults to `SYN_TOP`. |
+| `SYN_TOP` | 是 | 要 elaborate 與 synthesize 的 top module 名稱。 |
+| `SYN_SRC` | 通常是 | RTL source file 或 source file list。 |
+| `SYN_OUT` | 否 | 輸出檔名前綴。若未指定，預設使用 `SYN_TOP`。 |
 
 ---
 
-## Important Path Rule
+## 路徑規則
 
-The Makefile runs Design Compiler inside the `build/` directory.
+Makefile 會在 `build/` 目錄中執行 Design Compiler。
 
-Pass RTL paths relative to the project root, such as `src/...`. The Tcl script will automatically resolve them from inside `build/`.
+建議傳入相對於 project root 的 RTL 路徑，例如 `src/...`。Tcl script 會在 `build/` 內自動解析這些路徑。
 
-Correct:
+建議寫法：
 
 ```bash
 make synthesize SYN_TOP=PE SYN_SRC=src/PE_array/PE.sv
 ```
 
-Also accepted:
+也可以接受：
 
 ```bash
 make synthesize SYN_TOP=PE SYN_SRC=../src/PE_array/PE.sv
@@ -42,21 +56,21 @@ make synthesize SYN_TOP=PE SYN_SRC=../src/PE_array/PE.sv
 
 ---
 
-## Example Commands
+## 範例指令
 
-### Synthesize `PE`
+### 合成 `PE`
 
 ```bash
 make synthesize_PE
 ```
 
-Equivalent generic command:
+等價的一般指令：
 
 ```bash
 make synthesize SYN_TOP=PE SYN_SRC=src/PE_array/PE.sv SYN_OUT=PE
 ```
 
-This generates:
+會產生：
 
 ```text
 syn/PE_timing_max_50_rpt.txt
@@ -71,19 +85,19 @@ syn/PE_syn.sdc
 
 ---
 
-### Synthesize `PE_ori`
+### 合成 `PE_ori`
 
 ```bash
 make synthesize_PE_ori
 ```
 
-Equivalent generic command:
+等價的一般指令：
 
 ```bash
 make synthesize SYN_TOP=PE_ori SYN_SRC=src/PE_array/PE_origin.sv SYN_OUT=PE_ori
 ```
 
-This generates:
+會產生：
 
 ```text
 syn/PE_ori_timing_max_50_rpt.txt
@@ -98,19 +112,19 @@ syn/PE_ori_syn.sdc
 
 ---
 
-### Synthesize `PE_LEE`
+### 合成 `PE_LEE`
 
 ```bash
 make synthesize_PE_LEE
 ```
 
-Equivalent generic command:
+等價的一般指令：
 
 ```bash
 make synthesize SYN_TOP=PE_LEE SYN_SRC=src/PE_array/PE_LEE.sv SYN_OUT=PE_LEE
 ```
 
-This generates:
+會產生：
 
 ```text
 syn/PE_LEE_timing_max_50_rpt.txt
@@ -125,15 +139,15 @@ syn/PE_LEE_syn.sdc
 
 ---
 
-### Synthesize `PE_array`
+### 合成 `PE_array`
 
-Use the shortcut target so the required GIN/GON/PE source list is passed correctly:
+建議使用 shortcut target，Makefile 會自動帶入所需的 GIN/GON/PE source file list：
 
 ```bash
 make synthesize_PE_array
 ```
 
-This generates:
+會產生：
 
 ```text
 syn/PE_array_timing_max_50_rpt.txt
@@ -148,7 +162,7 @@ syn/PE_array_syn.sdf
 syn/PE_array_syn.sdc
 ```
 
-If you need to pass multiple RTL files manually, use quotes:
+如果要手動傳入多個 RTL 檔案，請用引號包住整個 file list：
 
 ```bash
 make synthesize SYN_TOP=PE_array SYN_SRC="src/PE_array/GIN/GIN_MulticastController.sv src/PE_array/GIN/GIN_Bus.sv src/PE_array/GIN/GIN.sv src/PE_array/GON/GON_MulticastController.sv src/PE_array/GON/GON_Bus_full_throughput_pipeline.sv src/PE_array/GON/GON_full_throughput_pipeline.sv src/PE_array/PE_LEE.sv src/PE_array/PE_array.sv" SYN_OUT=PE_array
@@ -156,25 +170,25 @@ make synthesize SYN_TOP=PE_array SYN_SRC="src/PE_array/GIN/GIN_MulticastControll
 
 ---
 
-## Output Naming Rule
+## 輸出命名規則
 
-The output prefix is controlled by `SYN_OUT`.
+輸出檔名前綴由 `SYN_OUT` 控制。
 
-If `SYN_OUT` is not specified, the script uses `SYN_TOP` as the output prefix.
+如果沒有指定 `SYN_OUT`，script 會使用 `SYN_TOP` 作為輸出前綴。
 
-For example:
+例如：
 
 ```bash
 make synthesize SYN_TOP=PE SYN_SRC=src/PE_array/PE.sv
 ```
 
-is equivalent to:
+等價於：
 
 ```bash
 make synthesize SYN_TOP=PE SYN_SRC=src/PE_array/PE.sv SYN_OUT=PE
 ```
 
-The generated files follow this naming rule:
+產生的檔案會依照以下命名規則：
 
 ```text
 syn/${SYN_OUT}_timing_max_50_rpt.txt
@@ -193,7 +207,7 @@ syn/${SYN_OUT}_syn.sdc
 
 ## Shortcut Targets
 
-The Makefile may also provide shortcut targets for common modules:
+Makefile 目前提供以下常用 target：
 
 ```bash
 make synthesize_PE
@@ -202,13 +216,13 @@ make synthesize_PE_LEE
 make synthesize_PE_array
 ```
 
-These targets should internally call the same parameterized synthesis flow.
+這些 target 都會呼叫同一套參數化合成流程。
 
 ---
 
-## Notes
+## 注意事項
 
-- `build/` is a generated working directory and should not be committed.
-- `syn/` contains generated reports, netlists, SDF files, and SDC files. Keep only the result files you need to submit or compare.
-- If Design Compiler prints the Tcl commands while running, that is normal.
-- Check the actual error message if synthesis fails, especially missing source paths or unset variables.
+- `build/` 是工具產生的工作目錄，不建議 commit。
+- `syn/` 內是合成產生的 report、netlist、SDF 與 SDC。只保留需要繳交或比較的結果即可。
+- Design Compiler 執行時如果印出 Tcl commands，屬於正常現象。
+- 如果合成失敗，請優先檢查實際 error message，常見原因包含 source path 錯誤或 Makefile 變數未設定。
